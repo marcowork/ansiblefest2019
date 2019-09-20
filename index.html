@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AT Searching Limits</title>
+
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<!-- This is the front page -->
+				<section data-background-image="./../../img/af-title-2019.png">
+				</section>
+
+
+<!-- Introduction of myself -->
+				<section data-background-image="./../../img/af-2019-background.png">
+					
+					<img src="img/avatar.jpg" alt="Avatar" class="avatarMarco">
+
+				</section>
+
+<!-- Introduction of ING -->
+
+				<section data-background-image="./../../img/af-2019-background.png">
+					ING across the world
+					<img src="img/ing-world.png" alt="Organizations">
+					
+
+					<aside class="notes">
+						These are countries where we are in. As a Global company ING thrives to have local teams take ownership of their applications
+						The DevOps mindset and Agile workenvironment enhances the segregated setup. Therefor Teams are the owners of their environements
+						All teams (of 8 to 10 DevOps engineers) can execute their own written playbooks.  
+				</section>
+
+
+
+				<section data-background-image="./../../img/af-2019-background.png">
+					ING across the world
+					<img src="img/ing-world.png" alt="Organizations">
+
+				</section>
+
+<!-- Tower numbers -->
+
+				<section data-background-image="./../../img/af-2019-background.png">
+					Number of Organizations over time
+					<img src="img/GrowthOrgs.png" alt="Organizations" class="graphs">
+
+					<aside class="notes">
+						As per today (September 2019) we have over 1000 organizations in our production environment
+						in november 2018 we started a mass onboarding in a fully automated way using a playbook.
+						Current number of organizations 987
+						We are still onboarding and we expect over 1200 organizations in 2 tower clusters. 
+					</aside>
+
+				</section>
+
+				<section data-background-image="./../../img/af-2019-background.png">
+					Number of Playbooks executed per month
+					<img src="img/GrowthExecutionPlaybook.png" alt="Organizations" class="graphs">
+
+				</section>
+
+
+<!-- This is the  page -->
+<section data-background-image="./../../img/af-2019-background.png">
+	Jinja2 template for mapping Organization to LDAP
+	<pre>
+		<code data-trim data-noescape class="hljs" data-line-numbers="4,8-11">
+				{
+					"AUTH_LDAP_ORGANIZATION_MAP": {
+					  {% for  organisational_unit  in  organisational_units %}
+					  "{{ organisational_unit }}": {
+						"admins": [
+						  "cn=Administrators,ou=Non-Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}",
+						  "cn=Administrators,ou=Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}"
+						],
+						"remove_admins": true,
+						"users": [
+						  "cn=Users,ou=Non-Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}",
+						  "cn=Users,ou=Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}"
+						],
+						"remove_users": true
+					  }{{ "," if not loop.last else ''}}
+					  {% endfor %}
+					},
+		</code>
+	</pre>
+</section>
+
+<section data-background-image="./../../img/af-2019-background.png">
+	Jinja2 template for mapping LDAP to team 
+
+	<pre>
+		<code data-trim data-noescape class="hljs" data-line-numbers="4,8-11">
+				"AUTH_LDAP_TEAM_MAP": {
+					{% for  organisational_unit  in  organisational_units %}
+					"{{ organisational_unit }}": {
+						"organization": "{{ organisational_unit }}",
+						"users": [
+						"cn=Administrators,ou=Non-Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}",
+						"cn=Users,ou=Non-Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}",
+						"cn=Administrators,ou=Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}",
+						"cn=Users,ou=Personal Accounts,ou={{ organisational_unit }},{{ organisation_groups_base_dn }}"
+						],
+						"remove": true
+						}{{ "," if not loop.last else ''}}
+					{% endfor %}
+					}
+				}
+			</code>
+		</pre>
+	</section>
+
+	<section data-background-image="./../../img/af-2019-background.png">
+		Result JSON
+	
+		<pre>
+			<code data-trim data-noescape class="hljs" data-line-numbers="4,8-11">
+				LOREM IPSUM
+				</code>
+			</pre>
+		</section>
+
+
+		<section data-background-image="./../../img/af-2019-background.png" >
+			<p>Code can be found here:</p>
+				<table style="height: 38px; width: 591px;">
+					<tbody>
+						<tr>
+							<td style="width: 250px;"><img src="img/Octocat.png" alt="Octocat" width="250" /></td>
+							<td style="width: 468px;">&nbsp;https://github.com/ing-bank</td>
+						</tr>
+					</tbody>
+			</table>
+		</section>
+
+
+<!-- This is the Thanks page -->
+				<section data-background-image="./../../img/af-2019-thanks.png">
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
