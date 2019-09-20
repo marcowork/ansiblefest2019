@@ -35,10 +35,20 @@
 				<section data-background-image="./../../img/af-2019-background.png">
 					
 					<img src="img/avatar.jpg" alt="Avatar" class="avatarMarco">
+					<p>Marco van Dam</p>
+					<p>38 years young<br 
+						/>Married, 1 Daughter<br 
+						/>IT Chapter Lead<br 
+						/>Github/marcowork
+					</p>
 
 				</section>
 
 <!-- Introduction of ING -->
+
+				<section data-background-image="./../../img/af-2019-background.png">
+					<img src="img/ing_logo.jpg" alt="ING_logo">
+				</section>
 
 				<section data-background-image="./../../img/af-2019-background.png">
 					ING across the world
@@ -49,15 +59,12 @@
 						These are countries where we are in. As a Global company ING thrives to have local teams take ownership of their applications
 						The DevOps mindset and Agile workenvironment enhances the segregated setup. Therefor Teams are the owners of their environements
 						All teams (of 8 to 10 DevOps engineers) can execute their own written playbooks.  
+					</aside>
 				</section>
 
 
 
-				<section data-background-image="./../../img/af-2019-background.png">
-					ING across the world
-					<img src="img/ing-world.png" alt="Organizations">
 
-				</section>
 
 <!-- Tower numbers -->
 
@@ -78,6 +85,15 @@
 					Number of Playbooks executed per month
 					<img src="img/GrowthExecutionPlaybook.png" alt="Organizations" class="graphs">
 
+
+					<aside class="notes">
+						the approximately 1000 organizations combined together produce 97000 + playbook runs per month
+						which is:
+						 ~ 3100 deployments per day
+						 ~ 130 per hour
+						 ~ 2 per minute
+						 24/7
+					</aside>
 				</section>
 
 
@@ -132,11 +148,20 @@
 	</section>
 
 	<section data-background-image="./../../img/af-2019-background.png">
-		Result JSON
-	
+		Jinja2 Result for Settings
 		<pre>
 			<code data-trim data-noescape class="hljs" data-line-numbers="4,8-11">
-				LOREM IPSUM
+					"LIONS": {
+						"organization": "LIONS",
+						"users": [
+							"cn=Administrators,ou=Non-Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower,
+							"cn=Users,ou=Non-Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower,
+							"cn=Administrators,ou=Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower,
+							"cn=Users,ou=Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower
+						],
+						"remove": true
+					}
+
 				</code>
 			</pre>
 		</section>
