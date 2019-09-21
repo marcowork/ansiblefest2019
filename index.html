@@ -22,6 +22,7 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		
 	</head>
 	<body>
 		<div class="reveal">
@@ -38,7 +39,7 @@
 					<p>Marco van Dam</p>
 					<p>38 years young<br 
 						/>Married, 1 Daughter<br 
-						/>IT Chapter Lead<br 
+						/>IT Chapter Lead @ ING<br 
 						/>Github/marcowork
 					</p>
 
@@ -48,6 +49,39 @@
 
 				<section data-background-image="./../../img/af-2019-background.png">
 					<img src="img/ing_logo.jpg" alt="ING_logo">
+				</section>
+
+				<section data-background-image="./../../img/af-2019-background.png">
+					 Lets talk numbers:
+
+					 <table style="border-collapse: collapse; width: 100%; height: 108px;">
+						<tbody>
+							<tr style="height: 18px;">
+							<td style="width: 28.0235%; height: 18px;">Employees:</td>
+							<td style="width: 71.9765%; height: 18px;">54.000 +</td>
+							</tr>
+							<tr style="height: 18px;">
+							<td style="width: 28.0235%; height: 18px;"><span style="color: #ff6600;"><strong>IT Engineers</strong></span></td>
+							<td style="width: 71.9765%; height: 18px;"><span style="color: #ff6600;"><strong>10.000 +</strong></span></td>
+							</tr>
+							<tr style="height: 18px;">
+							<td style="width: 28.0235%; height: 18px;">Customers:</td>
+							<td style="width: 71.9765%; height: 18px;">38.3 million across the world</td>
+							</tr>
+							<tr style="height: 18px;">
+							<td style="width: 28.0235%; height: 18px;">Countries</td>
+							<td style="width: 71.9765%; height: 18px;">Over 40 countries</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<aside class="notes">
+						ING is a global bank with a strong European base. Our 54,000 employees serve around 38.4 million customers, 
+						corporate clients and financial institutions in over 40 countries. Our purpose is to empower people to stay 
+						a step ahead in life and in business.Our products include savings, payments, investments, loans and mortgages 
+						in most of our retail markets. For our Wholesale Banking clients we provide specialised lending, tailored corporate finance, 
+						debt and equity market solutions, payments & cash management and trade and treasury services.
+					</aside>
 				</section>
 
 				<section data-background-image="./../../img/af-2019-background.png">
@@ -63,7 +97,12 @@
 				</section>
 
 
+				<section data-background-image="./../../img/af-2019-background.png">
 
+					<aside>
+
+					</aside>
+				</section>
 
 
 <!-- Tower numbers -->
@@ -97,7 +136,7 @@
 				</section>
 
 
-<!-- This is the  page -->
+<!-- This is the configuration page -->
 <section data-background-image="./../../img/af-2019-background.png">
 	Jinja2 template for mapping Organization to LDAP
 	<pre>
@@ -154,10 +193,10 @@
 					"LIONS": {
 						"organization": "LIONS",
 						"users": [
-							"cn=Administrators,ou=Non-Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower,
-							"cn=Users,ou=Non-Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower,
-							"cn=Administrators,ou=Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower,
-							"cn=Users,ou=Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,ou=Ansible Tower
+							"cn=Administrators,ou=Non-Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,o=Ansible Tower,
+							"cn=Users,ou=Non-Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,o=Ansible Tower,
+							"cn=Administrators,ou=Personal Accounts,ou=LIONS,ou=organisations,o=FOO,ou=Ansible Tower,
+							"cn=Users,ou=Personal Accounts,ou=LIONS,ou=organisations,ou=FOO,o=Ansible Tower
 						],
 						"remove": true
 					}

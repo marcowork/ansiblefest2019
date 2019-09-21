@@ -269,5 +269,5 @@ body {
  * PRINT BACKGROUND
  *********************************************/
 @media print {
-  .backgrounds {
+  .slides-backgrounds {
     background-color: #fff; } }
