@@ -79,7 +79,7 @@
 								</tr>
 								<tr>
 									<td style="width: 24%;"><strong>Company:</strong></td>
-									<td style="width: 76%;">ING</td>
+									<td style="width: 76%;">ING Bank</td>
 								</tr>
 							</tbody>
 						</table>
@@ -168,17 +168,21 @@
 				<section data-background-color="#fff">
 						<h2><span style="color: #ff6600;"><strong>Environmental Challenges</strong></span></h2>
 
-					<p class="fragment"> Distributed setup --> One Pipeline</p>
-					<p class="fragment"> Many different datacenters cross globe</p>
-					<p class="fragment"> Segregated network topology</p>
-					<p class="fragment"> Segregated UAM per country</p>
-
+						<p> Compliance Rules per country</p>
+						<p> DevOps teams responsible for their own setup</P>
+						<p> Distributed setup --> One Pipeline</p>
+						<p>  Many different datacenters cross globe</p>
+						<p>  Segregated network topology</p>
+						<p>  Segregated UAM per country</p>
+					<aside class="notes">
+						ING had a setup with a vendor application which we needed to decommision. This application was running 
+						in multiple countries in multiple datacenters (using agents and masters). Since ING has a segregated network 
+						topology with different kind of configurations per country and the user access model is also segregated per 
+						country (minor difference, but the devil is in the details.) The challenge to get from a distributed Setup
+						to a generic One Pipeline setup is huge. 
+						O and by the the deadline is in 4 months .... good luck! And ofcourse we did not make the deadline! 
+					</aside>
 				</section>
-
-
-
-
-
 
 </section>
 
@@ -282,14 +286,12 @@
 							- name: "Lets talk Code"
 								debug:
 							  var: Onboarding_organization
-
 					</code>
 				</pre>
-
 			</section>
 
 			<section data-background-image="./../../img/af-2019-background.png">
-				My favorite motto: RTFM
+				My favorite motto: <h2>RTFM</h2>
 				<a
 					href="https://docs.ansible.com/ansible-tower/latest/html/administration/ldap_auth.html">https://docs.ansible.com/ansible-tower/latest/html/administration/ldap_auth.html</a>
 			</section>
@@ -299,6 +301,7 @@
 				<span style="color: #ff6600;"><strong>Get current config from API</strong></span>
 				<pre>
 					<code>
+		# We use the URI module to get the the current config from Tower
 		- 	name: get current AUTH_LDAP_ORGANIZATION_MAP and AUTH_LDAP_TEAM_MAP from Ansible Tower API
 			uri:
 				url: "{{ tower_server_api_uri }}/settings/ldap/"
@@ -322,6 +325,7 @@
 				<span style="color: #ff6600;"><strong>Jinja2 template for mapping Organization to LDAP</strong></span>
 				<pre>
 		<code>
+# We use a Jinja2 template to generate the configuration according to the given parameters
 {
  "AUTH_LDAP_ORGANIZATION_MAP": {
 	{% for  organisational_unit  in  organisational_units %}
@@ -370,6 +374,7 @@
 				<span style="color: #ff6600;"><strong>PATCH current config from API</strong></span>
 				<pre>
 					<code>
+# we register the output and push it through the URI module using a patch method
 	- 	name: PATCH the AUTH_LDAP_ORGANIZATION_MAP and AUTH_LDAP_TEAM_MAP using the Ansible Tower API
 		uri:
 			url: "{{ tower_server_api_uri }}/settings/ldap/"
@@ -415,7 +420,7 @@
 <!-- This is the Challenges section -->
 
 			<section data-background-image="./../../img/af-2019-background.png">
-				<span style="color: #ff6600;"><strong>LDAP connectivity can be better</strong></span>
+				<span style="color: #ff6600;"><strong>LDAP connectivity setup should be improved</strong></span>
 				<img src="img/33.8.jpg" width="80%" height="80%  alt=" Organizations">
 			</section>
 
@@ -424,11 +429,13 @@
 				<p class="fragment"> Logstash integration</p>
 				<p class="fragment"> CyberArk integration</p>
 				<p class="fragment"> First page query</p>
+				<p class="fragment"> known bugs/issues</p>
+
 			
 			</section>
 
 
-			<section data-background-image="./../../img/af-2019-background.png">
+			<!-- <section data-background-image="./../../img/af-2019-background.png">
 				<p>Code can be found here:</p>
 				<table style="height: 38px; width: 591px;">
 					<tbody>
@@ -438,7 +445,7 @@
 						</tr>
 					</tbody>
 				</table>
-			</section>
+			</section> -->
 
 
 <!-- This is the Thanks page -->
